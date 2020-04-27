@@ -1,0 +1,36 @@
+#inputAdd{
+    border-radius: 8px;
+    padding: 15px;
+    padding-bottom: 9px;
+    border: none;
+    width: 50%;
+}
+#buttonAdd{
+    border-radius: 8px;
+    padding: 8px; 
+    border: none; 
+    margin: 0 10px;
+    cursor: pointer;
+}
+#buttonAdd:hover{
+    background-color: lightgray;
+}
+#refresh{
+    border-radius: 8px;
+    padding: 8px;
+    border: none;
+    cursor: pointer; 
+}
+#refresh:hover{
+    background-color: lightgray;
+}
+
+.fa-plus-circle{
+    font-size: 22px;
+    color: rgb(144, 30, 238);
+}
+.fa-cloud-upload-alt{ 
+    font-size: 22px;
+    color: rgb(195, 43, 233);
+}
+

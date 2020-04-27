@@ -1,0 +1,31 @@
+ol {
+    text-align: left;
+    padding: 10px;
+    list-style: none;
+    background: #fff;
+    border-radius: 10px;
+    -webkit-box-shadow: 3px 4px 14px 0px rgb(0, 0, 0, 0.39);
+    -moz-box-shadow: 3px 4px 14px 0px rgb(0, 0, 0, 0.39);
+    box-shadow: 3px 4px 14px 0px rgb(0, 0, 0, 0.39);
+}
+
+li {
+    padding: 15px;
+    margin: 10px;
+    font-size: 1em;
+    font-style: italic;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2)
+}
+
+li>button {
+    border: none;
+    background-color: #fff;
+    font-size: 1.5em;
+    float: right;
+    opacity: 0.6;
+    transition: opacity 1s;
+    
+}   
+li>button:hover {
+        background-color: lightgray;
+}
