@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Ajustar Tarefas';
-  titleIndex = 'Listas de Tarefas'
+  titleIndex = 'Lista de Tarefas'
 }

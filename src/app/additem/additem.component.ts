@@ -26,7 +26,7 @@ export class AdditemComponent implements OnInit {
 
   guardaTarefa(event) {
     this.nomeTarefa = event.target.value;
-    event.target.value = ""
+    console.log(event)
   }
 
   //adiciona o item como o primeiro do array
