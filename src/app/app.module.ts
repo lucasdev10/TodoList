@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { AdditemComponent } from './additem/additem.component';
 import { DisplayComponent } from './display/display.component';
 import { EditemComponent } from './editem/editem.component';
+import { ModalUpdateComponent } from './modal-update/modal-update.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AdditemComponent,
     DisplayComponent,
-    EditemComponent
+    EditemComponent,
+    ModalUpdateComponent
   ],
   imports: [
     BrowserModule,
