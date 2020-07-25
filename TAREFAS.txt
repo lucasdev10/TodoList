@@ -1,0 +1,4 @@
+Instalar bootstrap
+Utilizar modal para update
+Salvar tarefa com 'enter'
+Salvar local Storage
