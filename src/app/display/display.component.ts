@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Todo } from '../models/todo';
 import { ModalUpdateComponent } from '../modal-update/modal-update.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-display',
@@ -15,15 +16,17 @@ export class DisplayComponent implements OnInit {
   title = 'Ajustar Tarefas';
   show: boolean = true;
 
-  // decorator que espera os dados do array
-  @Input() todos: Array<any>
+  todos: any
 
   constructor(
     private _modalService: NgbModal,
+    private _api: ApiService
   ) { }
 
   ngOnInit(): void {
+    this.todos = this._api.todos
   }
+
 
   removerItem(item) {
     let index: number = this.todos.indexOf(item);
@@ -37,8 +40,7 @@ export class DisplayComponent implements OnInit {
 
     console.log('Abrir Modal');
     const ref = this._modalService.open(ModalUpdateComponent);
-    ref.componentInstance.newValor = {titulo: 'OK'};
-
+    ref.componentInstance.newValor = item.nome;
     //----------------------------------
     // let index: number = this.todos.indexOf(item);
     // let newValor

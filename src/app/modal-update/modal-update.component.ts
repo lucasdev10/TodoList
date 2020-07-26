@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { FormGroup } from '@angular/forms';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-modal-update',
@@ -9,19 +9,19 @@ import { FormGroup } from '@angular/forms';
 })
 export class ModalUpdateComponent implements OnInit {
 
-  isValidFormSubmitted = null;
-  isLoading = false;
-  createCountyForm: FormGroup;
+  newValor: any;
 
   constructor(
     public _modal: NgbActiveModal,
+    private _api: ApiService
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    console.log(this.newValor)
+  }
 
   updateConfirm(): void {
-    let nameCounty: string;
-    nameCounty = this.createCountyForm.value.nameCounty;
+    this._api.todos = this.newValor
   }
 
   update() {
@@ -30,13 +30,6 @@ export class ModalUpdateComponent implements OnInit {
     let validation = Array.prototype.filter.call(form, function (form) {
       form.classList.add('custom-was-validated');
     });
-    this.isValidFormSubmitted = false;
-    if (this.createCountyForm.invalid || this.isLoading) {
-      return;
-    }
-    this.isValidFormSubmitted = true;
-    this.isLoading = true;
-
     this.updateConfirm();
   };
 

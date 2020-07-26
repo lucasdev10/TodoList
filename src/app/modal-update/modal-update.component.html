@@ -6,15 +6,13 @@
 </div>
 
 <div class="modal-body">
-
   <form class="needs-validation">
     <fieldset>
       <div class="form-group row m-b-15">
         <label class="col-md-3 col-form-label" for="title">Tarefa:</label>
         <div class="col-md-7">
-
-          <input type="text" name="title" class="form-control" id="title" placeholder="Digite a nova tarefa"
-            formControlName="nameCounty" required />
+          <input type="text" name="tarefa" class="form-control" id="tarefa" placeholder="Digite a nova tarefa"
+            required />
         </div>
       </div>
     </fieldset>
@@ -23,6 +21,5 @@
 
 <div class="modal-footer">
   <button class="btn btn-sm btn-white" (click)="close()">Cancelar</button>
-  <button class="btn btn-sm btn-primary width-80" ngbAutofocus (click)="update()"
-    [disabled]="isLoading">Confirmar</button>
+  <button class="btn btn-sm btn-primary width-80" ngbAutofocus (click)="update()">Confirmar</button>
 </div>

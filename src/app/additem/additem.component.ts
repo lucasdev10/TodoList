@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Todo } from '../models/todo';
 import { R3TargetBinder } from '@angular/compiler';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-additem',
@@ -16,13 +17,15 @@ export class AdditemComponent implements OnInit {
   nomeTarefa: string;
   controle: number = 0
 
-  constructor() { }
+  constructor(
+    private _api: ApiService
+  ) { }
 
   ngOnInit(): void {
 
   }
 
-  todos: Todo[] = []
+  // todos: Todo[] = []
 
   guardaTarefa(event) {
     this.nomeTarefa = event.target.value;
@@ -36,8 +39,8 @@ export class AdditemComponent implements OnInit {
       let nome = this.nomeTarefa;
       let status = false;
       let id: number = +1
-      this.todos.push(new Todo(id, nome, status));
-     
+      // this.todos.push(new Todo(id, nome, status));
+      this._api.todos.push(new Todo(id, nome, status))
 
     }
   }

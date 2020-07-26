@@ -1,8 +1,4 @@
 <h1>{{titleIndex}}</h1> 
-<app-additem #add  ></app-additem> <!--[valorAtualizado]="tela.valorAtual" -->
-<app-display #tela [todos]="add.todos" ></app-display>
-
+<app-additem></app-additem> 
+<app-display></app-display>
 <router-outlet></router-outlet>
-
-<!-- <button *ngIf="!todo.status" (click)="markAsDone(todo)"><i class="far fa-check-circle"></i></button> 
-      <button *ngIf="todo.status" (click)="markAsUndone(todo)"><i class="fas fa-check-circle"></i></button>  -->
