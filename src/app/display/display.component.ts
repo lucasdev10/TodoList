@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Todo } from '../models/todo';
+import { ModalUpdateComponent } from '../modal-update/modal-update.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-display',
@@ -16,7 +18,9 @@ export class DisplayComponent implements OnInit {
   // decorator que espera os dados do array
   @Input() todos: Array<any>
 
-  constructor() { }
+  constructor(
+    private _modalService: NgbModal,
+  ) { }
 
   ngOnInit(): void {
   }
@@ -30,13 +34,21 @@ export class DisplayComponent implements OnInit {
   }
 
   editarItem(item) {
-    let index: number = this.todos.indexOf(item);
-    let newValor
-    if (newValor = window.prompt("Digite o novo valor:")) {
-      item.nome = newValor
-    } else {
-      item.nome = item.nome
-    }
+
+    console.log('Abrir Modal');
+    const ref = this._modalService.open(ModalUpdateComponent);
+    ref.componentInstance.newValor = {titulo: 'OK'};
+
+    //----------------------------------
+    // let index: number = this.todos.indexOf(item);
+    // let newValor
+    // if (newValor = window.prompt("Digite o novo valor:")) {
+    //   item.nome = newValor
+    // } else {
+    //   item.nome = item.nome
+    // }
+
+    //--------------------------------
     //  console.log(item.nome)
     // let index: number = this.todos.indexOf(item);
     // this.todos.splice(index, 1);

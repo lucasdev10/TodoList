@@ -1,1 +1,28 @@
-<p>modal-update works!</p>
+<div class="modal-header">
+  <h4 class="modal-title">Editar tarefa</h4>
+  <button type="button" class="close" aria-label="Close" (click)="close()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body">
+
+  <form class="needs-validation">
+    <fieldset>
+      <div class="form-group row m-b-15">
+        <label class="col-md-3 col-form-label" for="title">Tarefa:</label>
+        <div class="col-md-7">
+
+          <input type="text" name="title" class="form-control" id="title" placeholder="Digite a nova tarefa"
+            formControlName="nameCounty" required />
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>
+
+<div class="modal-footer">
+  <button class="btn btn-sm btn-white" (click)="close()">Cancelar</button>
+  <button class="btn btn-sm btn-primary width-80" ngbAutofocus (click)="update()"
+    [disabled]="isLoading">Confirmar</button>
+</div>

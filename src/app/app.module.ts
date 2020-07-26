@@ -8,6 +8,7 @@ import { AdditemComponent } from './additem/additem.component';
 import { DisplayComponent } from './display/display.component';
 import { EditemComponent } from './editem/editem.component';
 import { ModalUpdateComponent } from './modal-update/modal-update.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -15,13 +16,14 @@ import { ModalUpdateComponent } from './modal-update/modal-update.component';
     AdditemComponent,
     DisplayComponent,
     EditemComponent,
-    ModalUpdateComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ModalUpdateComponent]
 })
 export class AppModule { }

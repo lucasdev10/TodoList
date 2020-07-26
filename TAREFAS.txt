@@ -1,4 +1,6 @@
 Instalar bootstrap
 Utilizar modal para update
 Salvar tarefa com 'enter'
-Salvar local Storage
+Salvar dados no local Storage
+limpar input depois de salvar
+Arrumar aviso de erro de campo vazio

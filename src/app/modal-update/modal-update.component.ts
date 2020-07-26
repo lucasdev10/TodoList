@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-modal-update',
@@ -7,9 +9,39 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModalUpdateComponent implements OnInit {
 
-  constructor() { }
+  isValidFormSubmitted = null;
+  isLoading = false;
+  createCountyForm: FormGroup;
 
-  ngOnInit(): void {
+  constructor(
+    public _modal: NgbActiveModal,
+  ) { }
+
+  ngOnInit() { }
+
+  updateConfirm(): void {
+    let nameCounty: string;
+    nameCounty = this.createCountyForm.value.nameCounty;
   }
+
+  update() {
+    'use strict';
+    let form = document.getElementsByClassName('needs-validation');
+    let validation = Array.prototype.filter.call(form, function (form) {
+      form.classList.add('custom-was-validated');
+    });
+    this.isValidFormSubmitted = false;
+    if (this.createCountyForm.invalid || this.isLoading) {
+      return;
+    }
+    this.isValidFormSubmitted = true;
+    this.isLoading = true;
+
+    this.updateConfirm();
+  };
+
+  close() {
+    this._modal.close();
+  };
 
 }
