@@ -40,8 +40,7 @@ export class AdditemComponent implements OnInit {
       let status = false;
       let id: number = +1
       // this.todos.push(new Todo(id, nome, status));
-      this._api.todos.push(new Todo(id, nome, status))
-
+      this._api.todos.push(new Todo(nome, status))
     }
   }
   // atualizarItem(){

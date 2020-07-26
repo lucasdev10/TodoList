@@ -12,7 +12,7 @@
         <label class="col-md-3 col-form-label" for="title">Tarefa:</label>
         <div class="col-md-7">
           <input type="text" name="tarefa" class="form-control" id="tarefa" placeholder="Digite a nova tarefa"
-            required />
+            (keyup)="novaTarefa($event.target.value)" required />
         </div>
       </div>
     </fieldset>

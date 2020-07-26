@@ -1,5 +1,4 @@
-Instalar bootstrap
-Utilizar modal para update
+Fazer modal update funcionar
 Salvar tarefa com 'enter'
 Salvar dados no local Storage
 limpar input depois de salvar

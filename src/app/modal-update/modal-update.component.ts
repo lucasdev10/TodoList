@@ -9,19 +9,20 @@ import { ApiService } from '../api.service';
 })
 export class ModalUpdateComponent implements OnInit {
 
-  newValor: any;
+  tarefaNova: any;
+  posicao: number
 
   constructor(
     public _modal: NgbActiveModal,
-    private _api: ApiService
+    private _api: ApiService,
   ) { }
 
-  ngOnInit() { 
-    console.log(this.newValor)
+  ngOnInit() {
+    console.log(this.posicao)
   }
 
-  updateConfirm(): void {
-    this._api.todos = this.newValor
+  novaTarefa(event) {
+    this.tarefaNova = event
   }
 
   update() {
@@ -37,4 +38,10 @@ export class ModalUpdateComponent implements OnInit {
     this._modal.close();
   };
 
+  updateConfirm(): void {
+    let teste = this._api.todos
+    this._api.todos[this.posicao] = this.tarefaNova;
+    this._api.atualizar()
+    this._modal.close()
+  }
 }
