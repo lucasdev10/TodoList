@@ -1,5 +1,3 @@
-Fazer modal update funcionar
 Salvar tarefa com 'enter'
-Salvar dados no local Storage
-limpar input depois de salvar
 Arrumar aviso de erro de campo vazio
+Salvar dados no local Storage
