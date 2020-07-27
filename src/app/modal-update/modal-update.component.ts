@@ -19,9 +19,7 @@ export class ModalUpdateComponent implements OnInit {
     private _api: ApiService,
   ) { }
 
-  ngOnInit() {
-    console.log(this.posicao)
-  }
+  ngOnInit() { }
 
   novaTarefa(event) {
     this.tarefaNova = event

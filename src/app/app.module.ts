@@ -9,6 +9,7 @@ import { DisplayComponent } from './display/display.component';
 import { EditemComponent } from './editem/editem.component';
 import { ModalUpdateComponent } from './modal-update/modal-update.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

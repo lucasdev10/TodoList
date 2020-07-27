@@ -23,12 +23,7 @@ export class DisplayComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.atualizarLista()
-  }
-
-  atualizarLista() {
     this.todos = this._api.todos
-    console.log('OK')
   }
 
   removerItem(item) {
@@ -44,7 +39,6 @@ export class DisplayComponent implements OnInit {
     const ref = this._modalService.open(ModalUpdateComponent);
     ref.componentInstance.posicao = index;
     ref.componentInstance.novoValor.subscribe((result) => {
-      console.log(result)
       item.nome = result
     })
   }

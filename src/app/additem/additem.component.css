@@ -5,6 +5,7 @@
     border: none;
     width: 50%;
 }
+
 #buttonAdd{
     border-radius: 8px;
     padding: 8px; 
@@ -12,9 +13,11 @@
     margin: 0 10px;
     cursor: pointer;
 }
+
 #buttonAdd:hover{
     background-color: lightgray;
 }
+
 #refresh{
     border-radius: 8px;
     padding: 8px;

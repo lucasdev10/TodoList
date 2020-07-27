@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Todo } from '../models/todo';
-import { R3TargetBinder } from '@angular/compiler';
 import { ApiService } from '../mock.service';
 
 @Component({
@@ -10,42 +9,26 @@ import { ApiService } from '../mock.service';
 })
 export class AdditemComponent implements OnInit {
 
-
-  // @Input() valorAtualizado:any; 
-  // novoObjeto = {}
-
-  nomeTarefa: string;
-  controle: number = 0
+  tarefa: any = {
+    nome: '',
+  }
 
   constructor(
-    private _api: ApiService
+    private _api: ApiService,
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
 
-  }
-
-  // todos: Todo[] = []
-
-  guardaTarefa(event) {
-    this.nomeTarefa = event.target.value;
-  }
-
-  //adiciona o item como o primeiro do array
-  adicionarItem(event) {
-    if (this.nomeTarefa == undefined || this.nomeTarefa == "") {
+  adicionarItem() {
+    if (this.tarefa.nome == undefined || this.tarefa.nome == "") {
       alert("Digite uma tarefa")
     } else {
-      let nome = this.nomeTarefa;
+      let nome = this.tarefa.nome;
       let status = false;
       let id: number = +1
-      // this.todos.push(new Todo(id, nome, status));
       this._api.todos.push(new Todo(nome, status))
+      this.tarefa.nome = ''
     }
   }
-  // atualizarItem(){
-  //   let status = false;
-  //   this.novoObjeto = new Todo(this.valorAtualizado, status);
-  //   console.log("estou mostrando pela função");
-  // }
+
 }
