@@ -6,16 +6,10 @@ import { Todo } from './models/todo';
 })
 export class ApiService {
 
-  public id:number;
-  public nome:string;
-  public status:boolean;
-
   todos: Todo[] = []
 
   constructor() { }
 
-  atualizar(){
-    return this.todos
-  }
+
 
 }

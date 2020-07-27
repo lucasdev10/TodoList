@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Todo } from '../models/todo';
 import { ModalUpdateComponent } from '../modal-update/modal-update.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ApiService } from '../api.service';
+import { ApiService } from '../mock.service';
 
 @Component({
   selector: 'app-display',
@@ -43,7 +43,10 @@ export class DisplayComponent implements OnInit {
     let index: number = this.todos.indexOf(item);
     const ref = this._modalService.open(ModalUpdateComponent);
     ref.componentInstance.posicao = index;
-    this._api.atualizar()
+    ref.componentInstance.novoValor.subscribe((result) => {
+      console.log(result)
+      item.nome = result
+    })
   }
 
   markAsDone(todo) {

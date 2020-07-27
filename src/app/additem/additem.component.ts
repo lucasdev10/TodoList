@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Todo } from '../models/todo';
 import { R3TargetBinder } from '@angular/compiler';
-import { ApiService } from '../api.service';
+import { ApiService } from '../mock.service';
 
 @Component({
   selector: 'app-additem',

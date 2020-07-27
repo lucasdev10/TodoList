@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { ApiService } from '../api.service';
+import { ApiService } from '../mock.service';
 
 @Component({
   selector: 'app-modal-update',
@@ -8,6 +8,8 @@ import { ApiService } from '../api.service';
   styleUrls: ['./modal-update.component.css']
 })
 export class ModalUpdateComponent implements OnInit {
+
+  @Output() novoValor: EventEmitter<any> = new EventEmitter
 
   tarefaNova: any;
   posicao: number
@@ -39,9 +41,7 @@ export class ModalUpdateComponent implements OnInit {
   };
 
   updateConfirm(): void {
-    let teste = this._api.todos
-    this._api.todos[this.posicao] = this.tarefaNova;
-    this._api.atualizar()
     this._modal.close()
+    this.novoValor.emit(this.tarefaNova)
   }
 }
