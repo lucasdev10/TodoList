@@ -29,26 +29,15 @@ export class AdditemComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-    // const Swal = require('sweetalert2')
-    // Swal.fire({
-    //   width: 250,
-    //   heigth: 300,
-    //   position: 'center',
-    //   icon: 'error',
-    //   text: 'Digite uma tarefa.',
-    //   showConfirmButton: false,
-    //   timer: 2000
-    // })
-  }
+  ngOnInit() { }
 
   adicionarItemClick() {
     this.salvarItem();
   }
 
   salvarItem() {
-    if (this.form.value.tarefa == null && this.form.value.tarefa == undefined) {
-      alert("ERRO!! Digite uma tarefa!!")
+    if (this.form.value.tarefa == null || this.form.value.tarefa == '') {
+      this.getSwal();
     } else {
       let id = this.tarefa.id++;
       let nome = this.form.value.tarefa;
@@ -57,6 +46,18 @@ export class AdditemComponent implements OnInit {
       this.tarefa.nome = '';
       console.log(this.form.value.tarefa);
     }
+  }
+
+  getSwal() {
+    const Swal = require('sweetalert2')
+    Swal.fire({
+      width: 250,
+      position: 'center',
+      icon: 'error',
+      text: 'Digite uma tarefa.',
+      showConfirmButton: false,
+      timer: 2000
+    })
   }
 
 
