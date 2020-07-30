@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Todo } from '../models/todo';
 import { ApiService } from '../mock.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-additem',
@@ -9,26 +11,53 @@ import { ApiService } from '../mock.service';
 })
 export class AdditemComponent implements OnInit {
 
-  tarefa: any = {
+  public form: FormGroup;
+  public tarefa: Todo = {
+    id: 0,
     nome: '',
+    status: false
   }
 
   constructor(
     private _api: ApiService,
-  ) { }
+    private formBuilder: FormBuilder,
+  ) {
+    this.form = this.formBuilder.group({
+      'tarefa': [null, Validators.compose([
+        Validators.required,
+      ])],
+    });
+  }
 
-  ngOnInit(): void { }
+  ngOnInit() {
+    // const Swal = require('sweetalert2')
+    // Swal.fire({
+    //   width: 250,
+    //   heigth: 300,
+    //   position: 'center',
+    //   icon: 'error',
+    //   text: 'Digite uma tarefa.',
+    //   showConfirmButton: false,
+    //   timer: 2000
+    // })
+  }
 
-  adicionarItem() {
-    if (this.tarefa.nome == undefined || this.tarefa.nome == "") {
-      alert("Digite uma tarefa")
+  adicionarItemClick() {
+    this.salvarItem();
+  }
+
+  salvarItem() {
+    if (this.form.value.tarefa == null && this.form.value.tarefa == undefined) {
+      alert("ERRO!! Digite uma tarefa!!")
     } else {
-      let nome = this.tarefa.nome;
-      let status = false;
-      let id: number = +1
-      this._api.todos.push(new Todo(nome, status))
-      this.tarefa.nome = ''
+      let id = this.tarefa.id++;
+      let nome = this.form.value.tarefa;
+      let status = this.tarefa.status;
+      this._api.todos.push(new Todo(id, nome, status));
+      this.tarefa.nome = '';
+      console.log(this.form.value.tarefa);
     }
   }
+
 
 }

@@ -1,3 +1,2 @@
-Salvar tarefa com 'enter'
-Arrumar aviso de erro de campo vazio
+Arrumar aviso de erro de campo vazio (SWAL)
 Salvar dados no local Storage
