@@ -31,10 +31,6 @@ export class AdditemComponent implements OnInit {
 
   ngOnInit() { }
 
-  adicionarItemClick() {
-    this.salvarItem();
-  }
-
   salvarItem() {
     if (this.form.value.tarefa == null || this.form.value.tarefa == '') {
       this.getSwal();
@@ -43,8 +39,7 @@ export class AdditemComponent implements OnInit {
       let nome = this.form.value.tarefa;
       let status = this.tarefa.status;
       this._api.todos.push(new Todo(id, nome, status));
-      this.tarefa.nome = '';
-      console.log(this.form.value.tarefa);
+      this.form.get('tarefa').setValue('');
     }
   }
 

@@ -1,2 +1,1 @@
-Arrumar aviso de erro de campo vazio (SWAL)
 Salvar dados no local Storage
