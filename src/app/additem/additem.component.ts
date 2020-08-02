@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Todo } from '../models/todo';
 import { ApiService } from '../mock.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -17,6 +17,8 @@ export class AdditemComponent implements OnInit {
     nome: '',
     status: false
   }
+
+  // @Output() teste: EventEmitter<any> = new EventEmitter();
 
   constructor(
     private _api: ApiService,
@@ -40,7 +42,16 @@ export class AdditemComponent implements OnInit {
       let status = this.tarefa.status;
       this._api.todos.push(new Todo(id, nome, status));
       this.form.get('tarefa').setValue('');
+      // this.teste.emit(this._api.todos);
     }
+  }
+
+  enviarDados() {
+    // let novoItem = this._api.getData('tarefas');
+    // for (let i in novoItem) {
+    //   this._api.todos.push(novoItem[i]);
+    // }
+    this._api.setData('tarefas', this._api.todos);
   }
 
   getSwal() {

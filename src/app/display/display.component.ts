@@ -15,7 +15,7 @@ export class DisplayComponent implements OnInit {
   title = 'Ajustar Tarefas';
   show: boolean = true;
 
-  todos: any
+  todos: any[] = [];
 
   constructor(
     private _modalService: NgbModal,
@@ -23,7 +23,17 @@ export class DisplayComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.todos = this._api.todos
+    let item = this._api.getData('tarefas');
+    if (item.length > 0) {
+      for (let i in item) {
+        this._api.todos.push(item[i]);
+      }
+    }
+    this.todos = this._api.todos;
+    
+    // this.todos = this._api.todos;
+
+
   }
 
   removerItem(item) {
@@ -39,7 +49,7 @@ export class DisplayComponent implements OnInit {
     const ref = this._modalService.open(ModalUpdateComponent);
     ref.componentInstance.posicao = index;
     ref.componentInstance.novoValor.subscribe((result) => {
-      item.nome = result
+      item.nome = result;
     })
   }
 

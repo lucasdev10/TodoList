@@ -6,13 +6,12 @@
 </div>
 
 <div class="modal-body">
-  <form class="needs-validation">
+  <form [formGroup]="forms">
     <fieldset>
       <div class="form-group row m-b-15">
-        <label class="col-md-3 col-form-label" for="title">Tarefa:</label>
+        <label class="col-md-3 col-form-label" for="tarefa">Tarefa:</label>
         <div class="col-md-7">
-          <input type="text" name="tarefa" class="form-control" id="tarefa" placeholder="Digite a nova tarefa"
-            (keyup)="novaTarefa($event.target.value)" required />
+          <input type="text" class="form-control" id="tarefa" placeholder="Digite a nova tarefa" formControlName="tarefa">
         </div>
       </div>
     </fieldset>

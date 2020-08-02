@@ -1,6 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ApiService } from '../mock.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-modal-update',
@@ -14,32 +16,28 @@ export class ModalUpdateComponent implements OnInit {
   tarefaNova: any;
   posicao: number
 
+  forms: FormGroup;
+
   constructor(
     public _modal: NgbActiveModal,
     private _api: ApiService,
-  ) { }
+    private _formBuilder: FormBuilder
+  ) {
+    this.forms = this._formBuilder.group({
+      'tarefa': [null, Validators.required]
+    })
+   }
 
   ngOnInit() { }
 
-  novaTarefa(event) {
-    this.tarefaNova = event
-  }
-
   update() {
-    'use strict';
-    let form = document.getElementsByClassName('needs-validation');
-    let validation = Array.prototype.filter.call(form, function (form) {
-      form.classList.add('custom-was-validated');
-    });
-    this.updateConfirm();
+    let tarefa = this.forms.value.tarefa;
+    this._modal.close();
+    this.novoValor.emit(tarefa);
   };
 
   close() {
     this._modal.close();
   };
 
-  updateConfirm(): void {
-    this._modal.close()
-    this.novoValor.emit(this.tarefaNova)
-  }
 }
