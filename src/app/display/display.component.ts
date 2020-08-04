@@ -30,18 +30,19 @@ export class DisplayComponent implements OnInit {
       }
     }
     this.todos = this._api.todos;
-    
+
     // this.todos = this._api.todos;
 
 
   }
 
   removerItem(item) {
-    let index: number = this.todos.indexOf(item);
-    this.todos.splice(index, 1);
-    if (this.todos.length == 0) {
-      this.show = false;
-    }
+    this.getSwal(item);
+    // let index: number = this.todos.indexOf(item);
+    // this.todos.splice(index, 1);
+    // if (this.todos.length == 0) {
+    //   this.show = false;
+    // }
   }
 
   editarItem(item) {
@@ -50,6 +51,7 @@ export class DisplayComponent implements OnInit {
     ref.componentInstance.posicao = index;
     ref.componentInstance.novoValor.subscribe((result) => {
       item.nome = result;
+     this.getSwals();
     })
   }
 
@@ -60,4 +62,47 @@ export class DisplayComponent implements OnInit {
   markAsUndone(todo) {
     todo.status = false;
   }
+
+  getSwal(item) {
+    const Swal = require('sweetalert2')
+    Swal.fire({
+      width: 400,
+      title: 'Deseja mesmo excluir?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sim, excluir!'
+    }).then((result) => {
+      if (result.value) {
+        let index: number = this.todos.indexOf(item);
+        this.todos.splice(index, 1);
+        if (this.todos.length == 0) {
+          this.show = false;
+        }
+        Swal.fire({
+          icon: 'success',
+          showConfirmButton: false,
+          title: 'O item foi excluido da lista.',
+          timer: 1500
+        }
+        )
+      }
+    })
+  }
+
+  getSwals() {
+    const Swal = require('sweetalert2')
+    Swal.fire({
+      width: 250,
+      position: 'center',
+      icon: 'success',
+      text: 'Tarefa atualizada!',
+      showConfirmButton: false,
+      timer: 1500
+    })
+  }
+
+
+
 }

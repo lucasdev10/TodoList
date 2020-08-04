@@ -33,3 +33,15 @@ li>button {
 li>button:hover {
         background-color: lightgray;
 }
+
+.fa-edit{
+    color: rgb(17, 0, 255);
+}
+
+.fa-trash-alt{
+    color: red;
+}
+
+.fa-check-circle{
+    color: rgb(245, 209, 9);
+}

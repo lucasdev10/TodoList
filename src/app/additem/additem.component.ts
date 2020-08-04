@@ -47,11 +47,12 @@ export class AdditemComponent implements OnInit {
   }
 
   enviarDados() {
+
     // let novoItem = this._api.getData('tarefas');
     // for (let i in novoItem) {
     //   this._api.todos.push(novoItem[i]);
     // }
-    this._api.setData('tarefas', this._api.todos);
+    this.getSwals();
   }
 
   getSwal() {
@@ -63,6 +64,30 @@ export class AdditemComponent implements OnInit {
       text: 'Digite uma tarefa.',
       showConfirmButton: false,
       timer: 2000
+    })
+  }
+
+  getSwals() {
+    const Swal = require('sweetalert2')
+    Swal.fire({
+      width: 400,
+      title: 'Deseja salvar suas tarefas no banco de dados?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sim, salvar!'
+    }).then((result) => {
+      this._api.setData('tarefas', this._api.todos);
+      if (result.value) {
+        Swal.fire({
+          icon: 'success',
+          showConfirmButton: false,
+          title: 'Lista de tarefas salva com sucesso!',
+          timer: 1500
+        }
+        )
+      }
     })
   }
 
