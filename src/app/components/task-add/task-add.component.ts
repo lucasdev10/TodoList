@@ -18,8 +18,6 @@ export class TaskAddComponent implements OnInit {
     status: false
   }
 
-  // @Output() teste: EventEmitter<any> = new EventEmitter();
-
   constructor(
     private _simulatorApiService: SimulatorApiService,
     private formBuilder: FormBuilder,

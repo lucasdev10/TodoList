@@ -49,7 +49,7 @@ export class TasksComponent implements OnInit {
     let index: number = this.todos.indexOf(item);
     const ref = this._modalService.open(ModalTaskUpdateComponent);
     ref.componentInstance.posicao = index;
-    ref.componentInstance.novoValor.subscribe((result) => {
+    ref.componentInstance.updatedTask.subscribe((result) => {
       item.nome = result;
      this.getSwals();
     })

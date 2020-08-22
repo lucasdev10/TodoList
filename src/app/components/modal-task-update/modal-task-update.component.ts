@@ -11,33 +11,32 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ModalTaskUpdateComponent implements OnInit {
 
-  @Output() novoValor: EventEmitter<any> = new EventEmitter
+  @Output() updatedTask: EventEmitter<any> = new EventEmitter
 
-  tarefaNova: any;
-  posicao: number
-
+  // tarefaNova: any;
+  // posicao: number
   forms: FormGroup;
 
   constructor(
-    public _modal: NgbActiveModal,
+    public _modalActive: NgbActiveModal,
     private _simulatorApiService: SimulatorApiService,
     private _formBuilder: FormBuilder
   ) {
     this.forms = this._formBuilder.group({
-      'tarefa': [null, Validators.required]
+      'assignment': [null, Validators.required]
     })
    }
 
   ngOnInit() { }
 
   update() {
-    let tarefa = this.forms.value.tarefa;
-    this._modal.close();
-    this.novoValor.emit(tarefa);
+    let assignment = this.forms.value.assignment;
+    this.updatedTask.emit(assignment);
+    this._modalActive.close();
   };
 
   close() {
-    this._modal.close();
+    this._modalActive.close();
   };
 
 }
