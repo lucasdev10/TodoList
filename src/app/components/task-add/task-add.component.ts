@@ -1,18 +1,18 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Todo } from '../models/todo';
-import { ApiService } from '../mock.service';
+import { Assignment } from '../../models/assignment';
+import { SimulatorApiService } from '../../services/simulatorApi.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-additem',
-  templateUrl: './additem.component.html',
-  styleUrls: ['./additem.component.css']
+  selector: 'app-task-add',
+  templateUrl: './task-add.component.html',
+  styleUrls: ['./task-add.component.css']
 })
-export class AdditemComponent implements OnInit {
+export class TaskAddComponent implements OnInit {
 
   public form: FormGroup;
-  public tarefa: Todo = {
+  public tarefa: Assignment = {
     id: 0,
     nome: '',
     status: false
@@ -21,7 +21,7 @@ export class AdditemComponent implements OnInit {
   // @Output() teste: EventEmitter<any> = new EventEmitter();
 
   constructor(
-    private _api: ApiService,
+    private _simulatorApiService: SimulatorApiService,
     private formBuilder: FormBuilder,
   ) {
     this.form = this.formBuilder.group({
@@ -40,7 +40,7 @@ export class AdditemComponent implements OnInit {
       let id = this.tarefa.id++;
       let nome = this.form.value.tarefa;
       let status = this.tarefa.status;
-      this._api.todos.push(new Todo(id, nome, status));
+      this._simulatorApiService.tasks.push(new Assignment(id, nome, status));
       this.form.get('tarefa').setValue('');
       // this.teste.emit(this._api.todos);
     }
@@ -78,7 +78,7 @@ export class AdditemComponent implements OnInit {
       cancelButtonColor: '#d33',
       confirmButtonText: 'Sim, salvar!'
     }).then((result) => {
-      this._api.setData('tarefas', this._api.todos);
+      this._simulatorApiService.setData('tarefas', this._simulatorApiService.tasks);
       if (result.value) {
         Swal.fire({
           icon: 'success',

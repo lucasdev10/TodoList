@@ -1,4 +1,4 @@
-export class Todo {
+export class Assignment {
     constructor(
         public id: number,
         public nome: string,

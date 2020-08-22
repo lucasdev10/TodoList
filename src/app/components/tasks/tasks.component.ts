@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Todo } from '../models/todo';
-import { ModalUpdateComponent } from '../modal-update/modal-update.component';
+import { Assignment } from '../../models/assignment';
+import { ModalTaskUpdateComponent } from '../modal-task-update/modal-task-update.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ApiService } from '../mock.service';
+import { SimulatorApiService } from '../../services/simulatorApi.service';
 
 @Component({
-  selector: 'app-display',
-  templateUrl: './display.component.html',
-  styleUrls: ['./display.component.css']
+  selector: 'app-tasks',
+  templateUrl: './tasks.component.html',
+  styleUrls: ['./tasks.component.css']
 })
-export class DisplayComponent implements OnInit {
+export class TasksComponent implements OnInit {
 
   status: boolean;
   title = 'Ajustar Tarefas';
@@ -19,17 +19,17 @@ export class DisplayComponent implements OnInit {
 
   constructor(
     private _modalService: NgbModal,
-    private _api: ApiService
+    private _simulatorApiService: SimulatorApiService
   ) { }
 
   ngOnInit(): void {
-    let item = this._api.getData('tarefas');
+    let item = this._simulatorApiService.getData('tarefas');
     if (item.length > 0) {
       for (let i in item) {
-        this._api.todos.push(item[i]);
+        this._simulatorApiService.tasks.push(item[i]);
       }
     }
-    this.todos = this._api.todos;
+    this.todos = this._simulatorApiService.tasks;
 
     // this.todos = this._api.todos;
 
@@ -47,7 +47,7 @@ export class DisplayComponent implements OnInit {
 
   editarItem(item) {
     let index: number = this.todos.indexOf(item);
-    const ref = this._modalService.open(ModalUpdateComponent);
+    const ref = this._modalService.open(ModalTaskUpdateComponent);
     ref.componentInstance.posicao = index;
     ref.componentInstance.novoValor.subscribe((result) => {
       item.nome = result;

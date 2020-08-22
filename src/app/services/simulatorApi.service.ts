@@ -1,19 +1,15 @@
 import { Injectable, OnInit } from '@angular/core';
-import { Todo } from './models/todo';
-
+import { Assignment } from '../models/assignment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ApiService {
 
-  todos: Todo[] = []
+export class SimulatorApiService {
+
+  tasks: Assignment[] = [];
 
   constructor() { }
-
-  // ngOnInit(){
-  //   this.todos = this.getData('tarefas');
-  // }
 
   getData(key: string): any {
     return JSON.parse(localStorage.getItem(key));

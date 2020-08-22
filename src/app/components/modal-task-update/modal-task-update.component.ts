@@ -1,15 +1,15 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { ApiService } from '../mock.service';
+import { SimulatorApiService } from '../../services/simulatorApi.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
-  selector: 'app-modal-update',
-  templateUrl: './modal-update.component.html',
-  styleUrls: ['./modal-update.component.css']
+  selector: 'app-modal-task-update',
+  templateUrl: './modal-task-update.component.html',
+  styleUrls: ['./modal-task-update.component.css']
 })
-export class ModalUpdateComponent implements OnInit {
+export class ModalTaskUpdateComponent implements OnInit {
 
   @Output() novoValor: EventEmitter<any> = new EventEmitter
 
@@ -20,7 +20,7 @@ export class ModalUpdateComponent implements OnInit {
 
   constructor(
     public _modal: NgbActiveModal,
-    private _api: ApiService,
+    private _simulatorApiService: SimulatorApiService,
     private _formBuilder: FormBuilder
   ) {
     this.forms = this._formBuilder.group({
