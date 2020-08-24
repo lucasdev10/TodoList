@@ -11,11 +11,7 @@ import { SimulatorApiService } from '../../services/simulatorApi.service';
 })
 export class TasksComponent implements OnInit {
 
-  status: boolean;
-  title = 'Ajustar Tarefas';
-  show: boolean = true;
-
-  todos: any[] = [];
+  tasks: any[] = [];
 
   constructor(
     private _modalService: NgbModal,
@@ -23,44 +19,29 @@ export class TasksComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    let item = this._simulatorApiService.getData('tarefas');
+    let item = this._simulatorApiService.getData('tasks');
     if (item.length > 0) {
       for (let i in item) {
         this._simulatorApiService.tasks.push(item[i]);
       }
     }
-    this.todos = this._simulatorApiService.tasks;
-
-    // this.todos = this._api.todos;
-
-
+    this.tasks = this._simulatorApiService.tasks;
   }
 
-  removerItem(item) {
+  removeItem(item) {
     this.getSwal(item);
-    // let index: number = this.todos.indexOf(item);
-    // this.todos.splice(index, 1);
-    // if (this.todos.length == 0) {
-    //   this.show = false;
-    // }
   }
 
-  editarItem(item) {
-    let index: number = this.todos.indexOf(item);
+  editItem(item) {
     const ref = this._modalService.open(ModalTaskUpdateComponent);
-    ref.componentInstance.posicao = index;
     ref.componentInstance.updatedTask.subscribe((result) => {
-      item.nome = result;
+      item.title = result;
      this.getSwals();
     })
   }
 
-  markAsDone(todo) {
-    todo.status = true;
-  }
-
-  markAsUndone(todo) {
-    todo.status = false;
+  markStatus(item) {
+   item.status = !item.status;
   }
 
   getSwal(item) {
@@ -75,11 +56,8 @@ export class TasksComponent implements OnInit {
       confirmButtonText: 'Sim, excluir!'
     }).then((result) => {
       if (result.value) {
-        let index: number = this.todos.indexOf(item);
-        this.todos.splice(index, 1);
-        if (this.todos.length == 0) {
-          this.show = false;
-        }
+        let index: number = this.tasks.indexOf(item);
+        this.tasks.splice(index, 1);
         Swal.fire({
           icon: 'success',
           showConfirmButton: false,

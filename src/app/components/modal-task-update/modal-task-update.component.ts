@@ -13,8 +13,6 @@ export class ModalTaskUpdateComponent implements OnInit {
 
   @Output() updatedTask: EventEmitter<any> = new EventEmitter
 
-  // tarefaNova: any;
-  // posicao: number
   forms: FormGroup;
 
   constructor(

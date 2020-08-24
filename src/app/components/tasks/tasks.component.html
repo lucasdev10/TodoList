@@ -1,11 +1,10 @@
-<div>
-  <ol id="card" *ngIf="todos.length > 0">
-    <li *ngFor="let item of todos"> {{item.nome}}
-      <span id="caixaAtt"></span>
-      <button *ngIf="!item.status" (click)="markAsDone(item)"><i class="far fa-check-circle"></i></button>
-      <button *ngIf="item.status" (click)="markAsUndone(item)"><i class="fas fa-check-circle"></i></button>
-      <button (click)="editarItem(item)"><i class="fas fa-edit"></i></button>
-      <button (click)="removerItem(item)"><i class="far fa-trash-alt"></i></button>
-    </li>
-  </ol>
+<div *ngIf="tasks.length > 0">
+  <li *ngFor="let item of tasks"> {{item.title}}
+    <button name="markStatus" (click)="markStatus(item)">
+      <i [hidden]="item.status" class="far fa-check-circle"></i>
+      <i [hidden]="!item.status" class="fas fa-check-circle"></i>
+    </button>
+    <button (click)="editItem(item)"><i class="fas fa-edit"></i></button>
+    <button (click)="removeItem(item)"><i class="far fa-trash-alt"></i></button>
+  </li>
 </div>

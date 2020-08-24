@@ -1,8 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Assignment } from '../../models/assignment';
 import { SimulatorApiService } from '../../services/simulatorApi.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-task-add',
@@ -12,9 +11,9 @@ import Swal from 'sweetalert2';
 export class TaskAddComponent implements OnInit {
 
   public form: FormGroup;
-  public tarefa: Assignment = {
+  public assignment: Assignment = {
     id: 0,
-    nome: '',
+    title: '',
     status: false
   }
 
@@ -23,7 +22,7 @@ export class TaskAddComponent implements OnInit {
     private formBuilder: FormBuilder,
   ) {
     this.form = this.formBuilder.group({
-      'tarefa': [null, Validators.compose([
+      'assignment': [null, Validators.compose([
         Validators.required,
       ])],
     });
@@ -31,25 +30,19 @@ export class TaskAddComponent implements OnInit {
 
   ngOnInit() { }
 
-  salvarItem() {
-    if (this.form.value.tarefa == null || this.form.value.tarefa == '') {
+  saveItem() {
+    if (this.form.value.assignment == null || this.form.value.assignment == '') {
       this.getSwal();
     } else {
-      let id = this.tarefa.id++;
-      let nome = this.form.value.tarefa;
-      let status = this.tarefa.status;
-      this._simulatorApiService.tasks.push(new Assignment(id, nome, status));
-      this.form.get('tarefa').setValue('');
-      // this.teste.emit(this._api.todos);
+      let id = this.assignment.id++;
+      let title = this.form.value.assignment;
+      let status = this.assignment.status;
+      this._simulatorApiService.tasks.push(new Assignment(id, title, status));
+      this.form.get('assignment').setValue('');
     }
   }
 
-  enviarDados() {
-
-    // let novoItem = this._api.getData('tarefas');
-    // for (let i in novoItem) {
-    //   this._api.todos.push(novoItem[i]);
-    // }
+  sendData() {
     this.getSwals();
   }
 
@@ -76,7 +69,7 @@ export class TaskAddComponent implements OnInit {
       cancelButtonColor: '#d33',
       confirmButtonText: 'Sim, salvar!'
     }).then((result) => {
-      this._simulatorApiService.setData('tarefas', this._simulatorApiService.tasks);
+      this._simulatorApiService.setData('tasks', this._simulatorApiService.tasks);
       if (result.value) {
         Swal.fire({
           icon: 'success',
