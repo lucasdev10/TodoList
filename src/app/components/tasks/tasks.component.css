@@ -1,0 +1,50 @@
+content{
+    width: 90%;
+    display: flex;
+    justify-content: center;
+}
+
+.container{
+    margin: 0 1rem;
+    background-color: white;
+    width: 20%;
+    height: 4.5rem;
+    border-radius: 0.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.task{
+    width: 75%;
+    font-weight: 600;
+}
+
+.content-buttons{
+    width: 25%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.buttons{
+    width: 1.6rem;
+    border-radius: 0.7rem;
+    outline: none;
+    border: none;
+    font-size: 1.3rem;
+    background: none;
+    margin-right: 0.2rem;
+}
+
+.buttons:nth-child(1){
+    color: rgba(0, 0, 0, 0.945);
+}
+
+.buttons:nth-child(2){
+    color: rgb(47, 0, 255);
+}
+
+.buttons:nth-child(3){
+    color: rgb(255, 0, 0);
+}

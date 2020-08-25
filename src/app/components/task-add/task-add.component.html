@@ -1,8 +1,8 @@
-<div>
-  <form [formGroup]="form">
-    <input type="text" placeholder="Adicionar tarefa" id="assignment" formControlName="assignment">
-    <button name="saveTask" id="saveTask" (click)="saveItem()"><i class="fa fa-plus-circle"></i></button>
-    <button name="sendBankData" id="sendBankData" (click)="sendData()"><i
+<div class="container">
+  <form class="form" [formGroup]="form">
+    <input class="task-field" type="text" placeholder="Adicionar tarefa" id="assignment" formControlName="assignment">
+    <button class="buttons" name="saveTask" id="saveTask" (click)="saveItem()"><i class="fa fa-plus-circle"></i></button>
+    <button class="buttons" name="sendBankData" id="sendBankData" (click)="sendData()"><i
         class="fa fa-cloud-upload-alt"></i></button>
   </form>
 </div>

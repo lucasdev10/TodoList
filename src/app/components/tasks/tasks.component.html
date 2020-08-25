@@ -1,10 +1,14 @@
-<div *ngIf="tasks.length > 0">
-  <li *ngFor="let item of tasks"> {{item.title}}
-    <button name="markStatus" (click)="markStatus(item)">
-      <i [hidden]="item.status" class="far fa-check-circle"></i>
-      <i [hidden]="!item.status" class="fas fa-check-circle"></i>
-    </button>
-    <button (click)="editItem(item)"><i class="fas fa-edit"></i></button>
-    <button (click)="removeItem(item)"><i class="far fa-trash-alt"></i></button>
-  </li>
-</div>
+<content>
+  <span *ngIf="tasks.length > 0"></span>
+  <div *ngFor="let item of tasks" class="container">
+    <li class="task"> {{item.title}}</li>
+    <div class="content-buttons">
+      <button class="buttons" name="markStatus" (click)="markStatus(item)">
+        <i [hidden]="item.status" class="far fa-check-circle"></i>
+        <i [hidden]="!item.status" class="fas fa-check-circle"></i>
+      </button>
+      <button class="buttons" (click)="editItem(item)"><i class="fas fa-edit"></i></button>
+      <button class="buttons" (click)="removeItem(item)"><i class="far fa-trash-alt"></i></button>
+    </div>
+  </div>
+</content>
