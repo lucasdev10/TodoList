@@ -1,6 +1,6 @@
-<content>
+<section class="container">
   <span *ngIf="tasks.length > 0"></span>
-  <div *ngFor="let item of tasks" class="container">
+  <div class="cards" *ngFor="let item of tasks">
     <li class="task"> {{item.title}}</li>
     <div class="content-buttons">
       <button class="buttons" name="markStatus" (click)="markStatus(item)">
@@ -11,4 +11,4 @@
       <button class="buttons" (click)="removeItem(item)"><i class="far fa-trash-alt"></i></button>
     </div>
   </div>
-</content>
+</section>
