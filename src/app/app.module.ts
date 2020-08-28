@@ -13,6 +13,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ToastDirective } from './directives/toast.directive';
 import { SwalDirective } from './directives/swal.directive';
+import { TaskCreateComponent } from './components/task-create/task-create.component';
+import { HomeComponent } from './view/home/home.component';
+import { TaskSaveComponent } from './components/task-save/tasks-save.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,10 @@ import { SwalDirective } from './directives/swal.directive';
     TasksComponent,
     ModalTaskUpdateComponent,
     ToastDirective,
-    SwalDirective
+    SwalDirective,
+    TaskCreateComponent,
+    HomeComponent,
+    TaskSaveComponent
   ],
   imports: [
     BrowserModule,
