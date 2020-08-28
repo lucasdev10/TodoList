@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Assignment } from '../../models/assignment';
 import { ModalTaskUpdateComponent } from '../modal-task-update/modal-task-update.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SimulatorApiService } from '../../services/simulatorApi.service';
@@ -7,11 +6,11 @@ import { ToastDirective } from 'src/app/directives/toast.directive';
 import { SwalDirective } from 'src/app/directives/swal.directive';
 
 @Component({
-  selector: 'app-tasks-read',
-  templateUrl: './tasks.component.html',
-  styleUrls: ['./tasks.component.css']
+  selector: 'app-task-read',
+  templateUrl: './task-read.component.html',
+  styleUrls: ['./task-read.component.css']
 })
-export class TasksReadComponent implements OnInit {
+export class TaskReadComponent implements OnInit {
 
   tasks: any[] = [];
 

@@ -3,7 +3,7 @@ import { SwalDirective } from 'src/app/directives/swal.directive';
 import { SimulatorApiService } from 'src/app/services/simulatorApi.service';
 
 @Component({
-  selector: 'app-tasks-save',
+  selector: 'app-task-save',
   templateUrl: './tasks-save.component.html',
   styleUrls: ['./tasks-save.component.css']
 })
