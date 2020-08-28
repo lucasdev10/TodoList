@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { TaskAddComponent } from './components/task-add/task-add.component';
-import { TasksComponent } from './components/tasks/tasks.component';
 import { ModalTaskUpdateComponent } from './components/modal-task-update/modal-task-update.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -16,12 +15,13 @@ import { SwalDirective } from './directives/swal.directive';
 import { TaskCreateComponent } from './components/task-create/task-create.component';
 import { HomeComponent } from './view/home/home.component';
 import { TaskSaveComponent } from './components/task-save/tasks-save.component';
+import { TasksReadComponent } from './components/tasks-read/tasks.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TaskAddComponent,
-    TasksComponent,
+    TasksReadComponent,
     ModalTaskUpdateComponent,
     ToastDirective,
     SwalDirective,

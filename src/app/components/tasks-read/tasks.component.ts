@@ -7,11 +7,11 @@ import { ToastDirective } from 'src/app/directives/toast.directive';
 import { SwalDirective } from 'src/app/directives/swal.directive';
 
 @Component({
-  selector: 'app-tasks',
+  selector: 'app-tasks-read',
   templateUrl: './tasks.component.html',
   styleUrls: ['./tasks.component.css']
 })
-export class TasksComponent implements OnInit {
+export class TasksReadComponent implements OnInit {
 
   tasks: any[] = [];
 
