@@ -3,6 +3,8 @@ import { Assignment } from '../../models/assignment';
 import { ModalTaskUpdateComponent } from '../modal-task-update/modal-task-update.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SimulatorApiService } from '../../services/simulatorApi.service';
+import { ToastDirective } from 'src/app/directives/toast.directive';
+import { SwalDirective } from 'src/app/directives/swal.directive';
 
 @Component({
   selector: 'app-tasks',
@@ -15,7 +17,9 @@ export class TasksComponent implements OnInit {
 
   constructor(
     private _modalService: NgbModal,
-    private _simulatorApiService: SimulatorApiService
+    private _simulatorApiService: SimulatorApiService,
+    private _toastDirective: ToastDirective,
+    private _swalDirective: SwalDirective,
   ) { }
 
   ngOnInit(): void {
@@ -29,58 +33,25 @@ export class TasksComponent implements OnInit {
   }
 
   removeItem(item) {
-    this.getSwal(item);
+    let index: number = this.tasks.indexOf(item);
+    this._swalDirective.swalAlert(
+      'warning',
+      'Deseja excluir tarefa?',
+      this.tasks.splice(index, 1),
+      'Tarefa excluida!',
+    )
   }
 
   editItem(item) {
     const ref = this._modalService.open(ModalTaskUpdateComponent);
     ref.componentInstance.updatedTask.subscribe((result) => {
       item.title = result;
-     this.getSwals();
+      this._toastDirective.showMessage('Tarefa atualizada!')
     })
   }
 
   markStatus(item) {
-   item.status = !item.status;
+    item.status = !item.status;
   }
-
-  getSwal(item) {
-    const Swal = require('sweetalert2')
-    Swal.fire({
-      width: 400,
-      title: 'Deseja mesmo excluir?',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Sim, excluir!'
-    }).then((result) => {
-      if (result.value) {
-        let index: number = this.tasks.indexOf(item);
-        this.tasks.splice(index, 1);
-        Swal.fire({
-          icon: 'success',
-          showConfirmButton: false,
-          title: 'O item foi excluido da lista.',
-          timer: 1500
-        }
-        )
-      }
-    })
-  }
-
-  getSwals() {
-    const Swal = require('sweetalert2')
-    Swal.fire({
-      width: 250,
-      position: 'center',
-      icon: 'success',
-      text: 'Tarefa atualizada!',
-      showConfirmButton: false,
-      timer: 1500
-    })
-  }
-
-
 
 }

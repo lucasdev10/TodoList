@@ -1,3 +1,25 @@
-body{
-    background-color: rgb(36, 3, 37);
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Questrial', sans-serif;
+  background-color: rgb(36, 3, 37);
+}
+
+.msg-error {
+  background-color: #FF0000;
+  color: white;
+}
+
+.msg-error button {
+  color: white;
+}
+
+.msg-success {
+  background-color: #67ca8a;
+  color: white;
+}
+
+.msg-success button {
+  color: white;
 }

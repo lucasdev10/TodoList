@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Assignment } from '../../models/assignment';
 import { SimulatorApiService } from '../../services/simulatorApi.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastDirective } from 'src/app/directives/toast.directive';
+import { SwalDirective } from 'src/app/directives/swal.directive';
 
 @Component({
   selector: 'app-task-add',
@@ -19,9 +21,11 @@ export class TaskAddComponent implements OnInit {
 
   constructor(
     private _simulatorApiService: SimulatorApiService,
-    private formBuilder: FormBuilder,
+    private _formBuilder: FormBuilder,
+    private _toastDirective: ToastDirective,
+    private _swalDirective: SwalDirective,
   ) {
-    this.form = this.formBuilder.group({
+    this.form = this._formBuilder.group({
       'assignment': [null, Validators.compose([
         Validators.required,
       ])],
@@ -32,7 +36,7 @@ export class TaskAddComponent implements OnInit {
 
   saveItem() {
     if (this.form.value.assignment == null || this.form.value.assignment == '') {
-      this.getSwal();
+      this._toastDirective.showMessage("ERRO! Digite uma tarefa.", true);
     } else {
       let id = this.assignment.id++;
       let title = this.form.value.assignment;
@@ -43,44 +47,13 @@ export class TaskAddComponent implements OnInit {
   }
 
   sendData() {
-    this.getSwals();
+    this._swalDirective.swalAlert(
+      'info',
+      'Deseja salvar suas tarefas?',
+      this._simulatorApiService.setData('tasks', this._simulatorApiService.tasks),
+      'Salvo com sucesso!',
+      false
+    );
   }
-
-  getSwal() {
-    const Swal = require('sweetalert2')
-    Swal.fire({
-      width: 250,
-      position: 'center',
-      icon: 'error',
-      text: 'Digite uma tarefa.',
-      showConfirmButton: false,
-      timer: 2000
-    })
-  }
-
-  getSwals() {
-    const Swal = require('sweetalert2')
-    Swal.fire({
-      width: 400,
-      title: 'Deseja salvar suas tarefas no banco de dados?',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Sim, salvar!'
-    }).then((result) => {
-      this._simulatorApiService.setData('tasks', this._simulatorApiService.tasks);
-      if (result.value) {
-        Swal.fire({
-          icon: 'success',
-          showConfirmButton: false,
-          title: 'Lista de tarefas salva com sucesso!',
-          timer: 1500
-        }
-        )
-      }
-    })
-  }
-
 
 }

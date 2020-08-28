@@ -9,20 +9,28 @@ import { TasksComponent } from './components/tasks/tasks.component';
 import { ModalTaskUpdateComponent } from './components/modal-task-update/modal-task-update.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ToastDirective } from './directives/toast.directive';
+import { SwalDirective } from './directives/swal.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     TaskAddComponent,
     TasksComponent,
-    ModalTaskUpdateComponent
+    ModalTaskUpdateComponent,
+    ToastDirective,
+    SwalDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent],

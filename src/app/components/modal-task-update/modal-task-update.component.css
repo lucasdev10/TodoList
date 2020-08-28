@@ -1,0 +1,16 @@
+.modal-header {
+  background-color: rgb(31, 3, 32);
+  color: white;
+}
+
+.close{
+    color: white;
+}
+
+.modal-body {
+  background-color: rgb(63, 8, 51);
+}
+
+.modal-footer {
+    background-color: rgb(31, 3, 32);
+}
