@@ -13,3 +13,11 @@ h1 {
   align-items: center;
   justify-content: center;
 }
+
+.content-main {
+  background-color: rgba(139, 17, 113, 0.397);
+  width: 88%;
+  margin: 0 auto;
+  border-radius: 1rem;
+  padding: 1rem;
+}

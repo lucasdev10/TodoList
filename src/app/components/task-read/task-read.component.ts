@@ -31,14 +31,8 @@ export class TaskReadComponent implements OnInit {
     this.tasks = this._simulatorApiService.tasks;
   }
 
-  removeItem(item) {
-    let index: number = this.tasks.indexOf(item);
-    this._swalDirective.swalAlert(
-      'warning',
-      'Deseja excluir tarefa?',
-      this.tasks.splice(index, 1),
-      'Tarefa excluida!',
-    )
+  markStatus(item) {
+    item.status = !item.status;
   }
 
   editItem(item) {
@@ -47,10 +41,6 @@ export class TaskReadComponent implements OnInit {
       item.title = result;
       this._toastDirective.showMessage('Tarefa atualizada!')
     })
-  }
-
-  markStatus(item) {
-    item.status = !item.status;
   }
 
 }

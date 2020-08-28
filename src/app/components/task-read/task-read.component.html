@@ -8,7 +8,7 @@
         <i [hidden]="!item.status" class="fas fa-check-circle"></i>
       </button>
       <button class="buttons" (click)="editItem(item)"><i class="fas fa-edit"></i></button>
-      <button class="buttons" (click)="removeItem(item)"><i class="far fa-trash-alt"></i></button>
+      <app-task-delete [items]="item"></app-task-delete>
     </div>
   </div>
 </section>
