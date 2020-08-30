@@ -8,3 +8,9 @@
     font-size: 1.2rem;
     color: rgb(116, 8, 8);
 }
+
+@media screen and (max-width: 300px) {
+    .buttons{
+      margin-right: 1rem;
+    }
+  }

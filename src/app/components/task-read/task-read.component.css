@@ -11,9 +11,8 @@
 
 .cards {
   background-color: white;
-  max-width: 100%;
-  width: auto;
-  min-height: 5rem;
+  width: 23%;
+  height: auto;
   border-radius: 0.8rem;
   display: flex;
   align-items: center;
@@ -53,4 +52,22 @@
 
 .buttons:nth-child(3) {
   color: rgb(255, 0, 0);
+}
+
+@media screen and (max-width: 1000px){
+  .cards {
+    width: 31%;
+  }
+}
+
+@media screen and (max-width: 768px){
+  .cards {
+    width: 47%;
+  }
+}
+
+@media screen and (max-width: 550px){
+  .cards {
+    width: 100%;
+  }
 }
