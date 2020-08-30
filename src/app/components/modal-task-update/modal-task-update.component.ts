@@ -1,6 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { SimulatorApiService } from '../../services/simulatorApi.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
@@ -17,7 +16,6 @@ export class ModalTaskUpdateComponent implements OnInit {
 
   constructor(
     public _modalActive: NgbActiveModal,
-    private _simulatorApiService: SimulatorApiService,
     private _formBuilder: FormBuilder
   ) {
     this.forms = this._formBuilder.group({

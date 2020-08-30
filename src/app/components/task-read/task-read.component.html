@@ -1,15 +1,13 @@
-<span *ngIf="tasks.length > 0">
-  <section class="container">
-    <div class="cards" *ngFor="let item of tasks">
-      <li class="task"> {{item.title}}</li>
-      <div class="content-buttons">
-        <button class="buttons" name="markStatus" (click)="markStatus(item)">
-          <i [hidden]="item.status" class="far fa-check-circle"></i>
-          <i [hidden]="!item.status" class="fas fa-check-circle"></i>
-        </button>
-        <button class="buttons" (click)="editItem(item)"><i class="fas fa-edit"></i></button>
-        <app-task-delete [items]="item"></app-task-delete>
-      </div>
+<section *ngIf="tasks.length > 0" class="container">
+  <div class="cards" *ngFor="let item of tasks">
+    <li class="task"> {{item.title}}</li>
+    <div class="content-buttons">
+      <button class="buttons" name="markStatus" (click)="markStatus(item)">
+        <i [hidden]="item.status" class="far fa-check-circle"></i>
+        <i [hidden]="!item.status" class="fas fa-check-circle"></i>
+      </button>
+      <button class="buttons" (click)="editItem(item)"><i class="fas fa-edit"></i></button>
+      <app-task-delete [items]="item"></app-task-delete>
     </div>
-  </section>
-</span>
+  </div>
+</section>

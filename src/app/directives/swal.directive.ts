@@ -1,4 +1,4 @@
-import { Directive, Injectable, Output } from '@angular/core';
+import { Directive, Injectable } from '@angular/core';
 import { SimulatorApiService } from '../services/simulatorApi.service';
 import { ToastDirective } from './toast.directive';
 

@@ -1,7 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { SwalDirective } from 'src/app/directives/swal.directive';
 import { TaskReadComponent } from '../task-read/task-read.component';
-import { SimulatorApiService } from 'src/app/services/simulatorApi.service';
 import { ToastDirective } from 'src/app/directives/toast.directive';
 
 @Component({
@@ -14,10 +12,8 @@ export class TaskDeleteComponent implements OnInit {
   @Input() items: any;
 
   constructor(
-    private _swalDirective: SwalDirective,
     private _taskReadComponent: TaskReadComponent,
-    private _simulatorApiService: SimulatorApiService,
-    private _toastDirective: ToastDirective,
+    private _toastDirective: ToastDirective
   ) { }
 
   ngOnInit(): void { }

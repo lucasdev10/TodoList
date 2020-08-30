@@ -3,7 +3,6 @@ import { Assignment } from '../../models/assignment';
 import { SimulatorApiService } from '../../services/simulatorApi.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastDirective } from 'src/app/directives/toast.directive';
-import { SwalDirective } from 'src/app/directives/swal.directive';
 
 @Component({
   selector: 'app-task-create',
@@ -23,7 +22,6 @@ export class TaskCreateComponent implements OnInit {
     private _simulatorApiService: SimulatorApiService,
     private _formBuilder: FormBuilder,
     private _toastDirective: ToastDirective,
-    private _swalDirective: SwalDirective,
   ) {
     this.form = this._formBuilder.group({
       'assignment': [null, Validators.compose([
@@ -45,15 +43,5 @@ export class TaskCreateComponent implements OnInit {
       this.form.get('assignment').setValue('');
     }
   }
-
-  // sendData() {
-  //   this._swalDirective.swalAlert(
-  //     'info',
-  //     'Deseja salvar suas tarefas?',
-  //     this._simulatorApiService.setData('tasks', this._simulatorApiService.tasks),
-  //     'Salvo com sucesso!',
-  //     false
-  //   );
-  // }
 
 }
