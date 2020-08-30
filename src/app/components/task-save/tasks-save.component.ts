@@ -12,7 +12,7 @@ export class TaskSaveComponent implements OnInit {
   constructor(
     private _swalDirective: SwalDirective,
     private _simulatorApiService: SimulatorApiService
-    ) { }
+  ) { }
 
   ngOnInit(): void {
   }
@@ -21,9 +21,8 @@ export class TaskSaveComponent implements OnInit {
     this._swalDirective.swalAlert(
       'info',
       'Deseja salvar suas tarefas?',
-      this._simulatorApiService.setData('tasks', this._simulatorApiService.tasks),
+      'toSave',
       'Salvo com sucesso!',
-      false
     );
   }
 

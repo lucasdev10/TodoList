@@ -1,4 +1,4 @@
-import { Directive, Injectable } from '@angular/core';
+import { Directive, Injectable, Output } from '@angular/core';
 import { SimulatorApiService } from '../services/simulatorApi.service';
 import { ToastDirective } from './toast.directive';
 
@@ -11,9 +11,12 @@ import { ToastDirective } from './toast.directive';
 })
 export class SwalDirective {
 
-    constructor(private _toastDirective: ToastDirective) { }
+    constructor(
+        private _toastDirective: ToastDirective,
+        private _simulatorApiService: SimulatorApiService,
+    ) { }
 
-    swalAlert(icon?, title?, func?, showMessage?, isError?) {
+    swalAlert(icon?, title?, option?, showMessage?, isError?) {
         const Swal = require('sweetalert2')
         Swal.fire({
             width: 350,
@@ -25,9 +28,17 @@ export class SwalDirective {
             confirmButtonText: 'Sim',
             cancelButtonText: 'Não'
         }).then((result) => {
-            func;
-            if (result.value) {
-                this._toastDirective.showMessage(showMessage, isError)
+            if (result.value == true) {
+                switch (option) {
+                    case 'toSave':
+                        this._simulatorApiService.setData('tasks', this._simulatorApiService.tasks)
+                        break;
+
+                    case 'delete':
+                        // TODO: Achar solução para excluir
+                        break;
+                }
+                this._toastDirective.showMessage(showMessage, isError);
             }
         })
     }
