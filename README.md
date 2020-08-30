@@ -1,5 +1,8 @@
 # TodoListApp
 
+## Este Projeto é, uma lista de tarefas, podendo criar, salvar, excluir, editar e marcar cada uma delas. 
+## O botão salvar, simula um envio para um banco de dados, mas ao invés de salvar em um banco, as tarefas são salvas diretamente no localStorage.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.7.
 
 ## Development server
