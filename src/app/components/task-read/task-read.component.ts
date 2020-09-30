@@ -23,7 +23,7 @@ export class TaskReadComponent implements OnInit {
 
   ngOnInit(): void {
     let item = this._simulatorApiService.getData('tasks');
-    if (item.length > 0) {
+    if (item != null) {
       for (let i in item) {
         this._simulatorApiService.tasks.push(item[i]);
       }
